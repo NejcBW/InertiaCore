@@ -1,5 +1,8 @@
 namespace InertiaCore.Models;
 
+/// <summary>
+/// A class representing the Inertia's Page object.
+/// </summary>
 internal class Page
 {
     public Dictionary<string, object?> Props { get; set; } = default!;

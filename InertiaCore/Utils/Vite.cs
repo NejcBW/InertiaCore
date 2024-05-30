@@ -22,6 +22,7 @@ internal class ViteBuilder : IViteBuilder
 
     public ViteBuilder(IOptions<ViteOptions> options) => (_fileSystem, _options) = (new FileSystem(), options);
 
+    // Only used in tests
     protected internal void UseFileSystem(IFileSystem fileSystem)
     {
         _fileSystem = fileSystem;

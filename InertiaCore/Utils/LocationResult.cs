@@ -4,6 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace InertiaCore.Utils;
 
+/// <summary>
+/// Returns a 409 Conflict response including the url in an X-Inertia-Location
+/// header. Inertia will then automatically perform a redirect by setting
+/// window.location = url.
+/// </summary>
 public class LocationResult : IActionResult
 {
     private readonly string _url;

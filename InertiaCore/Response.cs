@@ -31,6 +31,13 @@ public class Response : IActionResult
         await GetResult().ExecuteResultAsync(_context!);
     }
 
+    /// <summary>
+    /// Contains logic that creates a new <see cref="Page"/> object and sets
+    /// its properties. The <c>Props</c> property of the <see cref="Page"/>
+    /// object is either set equal to the requested list of properties from a
+    /// partial reload request or set to the properties passed to the
+    /// constructor.
+    /// </summary>
     protected internal void ProcessResponse()
     {
         var page = new Page
@@ -107,6 +114,11 @@ public class Response : IActionResult
         return new ViewResult { ViewName = _rootView, ViewData = viewData };
     }
 
+    /// <summary>
+    /// Gets result.
+    /// </summary>
+    /// <returns>Returns JSON encoded Page object (JsonResult) if it's Inertia request
+    /// otherwise it returns the requested page as a ViewResult.</returns>
     protected internal IActionResult GetResult() => _context!.IsInertiaRequest() ? GetJson() : GetView();
 
     private IDictionary<string, string> GetErrors()
